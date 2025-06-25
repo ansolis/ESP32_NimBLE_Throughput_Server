@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BLE Client</title>
+</head>
+<body>
+    <div id="frame" style="width:100vw; height:100vh; position:relative; display:flex; flex-direction:column;">
+        <button id="discoverBtn" style="margin-top:10vh; align-self:center;">Discover...</button>
+        <div id="outputBox"
+            style="position:absolute; left:0; width:100%; height:80%; bottom:10px; overflow:auto; box-sizing:border-box; background:#fff; border:1px solid #ccc; padding:8px;"></div>
+    </div>
+    <script>
+        function centerFrame() {
+            var frame = document.getElementById('frame');
+            var width = window.innerWidth / 2;
+            var height = window.innerHeight - 20;
+            frame.style.width = width + 'px';
+            frame.style.height = height + 'px';
+            frame.style.position = 'absolute';
+            frame.style.left = (window.innerWidth - width) / 2 + 'px';
+            frame.style.top = (window.innerHeight - height) / 2 + 'px';
+            frame.style.display = 'flex';
+            frame.style.justifyContent = 'center';
+            frame.style.alignItems = 'center';
+            frame.style.border = '1px solid #ccc';
+            frame.style.background = '#f9f9f9';
+            frame.style.boxSizing = 'border-box';
+
+            var discoverBtn = document.getElementById('discoverBtn');
+            // Place the button in the middle of the top 1/5th of the frame
+            discoverBtn.style.position = 'absolute';
+            discoverBtn.style.top = (frame.clientHeight * 0.1) - (discoverBtn.style.height / 2) + 'px';
+            discoverBtn.style.left = '50%';
+            discoverBtn.style.transform = 'translateX(-50%)';
+            discoverBtn.style.marginTop = '0';
+            discoverBtn.style.zIndex = '2';
+        }
+        window.addEventListener('resize', centerFrame);
+        window.addEventListener('DOMContentLoaded', centerFrame);
+        </script>
+        <script src="ble_client.js"></script>
+    </body>
+    </html>
